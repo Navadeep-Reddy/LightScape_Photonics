@@ -1,0 +1,167 @@
+import { useState } from "react";
+
+interface StudentData {
+    id: number;
+    registerNo: string;
+    name: string;
+    imagelink: string;
+    year: number;
+}
+
+export default function PicturesMobile() {
+    const studentData: StudentData[] = [
+        {
+            id: 1,
+            registerNo: "21341A05A1",
+            name: "Arjun Sharma",
+            imagelink:
+                "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
+            year: 3,
+        },
+        {
+            id: 2,
+            registerNo: "21341A05B2",
+            name: "Priya Patel",
+            imagelink:
+                "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
+            year: 2,
+        },
+        {
+            id: 3,
+            registerNo: "21341A05C3",
+            name: "Vikram Singh",
+            imagelink:
+                "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
+            year: 4,
+        },
+        {
+            id: 4,
+            registerNo: "21341A05D4",
+            name: "Sneha Reddy",
+            imagelink:
+                "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
+            year: 1,
+        },
+        {
+            id: 5,
+            registerNo: "21341A05E5",
+            name: "Rahul Kumar",
+            imagelink:
+                "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
+            year: 3,
+        },
+        {
+            id: 6,
+            registerNo: "21341A05F6",
+            name: "Ananya Guptasas",
+            imagelink:
+                "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
+            year: 2,
+        },
+        {
+            id: 7,
+            registerNo: "21341A05G7",
+            name: "Karthik Menon",
+            imagelink:
+                "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
+            year: 4,
+        },
+        {
+            id: 8,
+            registerNo: "21341A05H8",
+            name: "Deepika Nair",
+            imagelink:
+                "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
+            year: 1,
+        },
+    ];
+
+    const [selectedStudent, setSelectedStudent] = useState<StudentData>(
+        studentData[0]
+    );
+
+    return (
+        <div className="w-full h-screen flex flex-col bg-cream">
+            {/* Header */}
+            <div className="flex-shrink-0 text-center py-4 px-4">
+                <h1 className="text-2xl text-neutral font-bold">
+                    Gallery Preview
+                </h1>
+            </div>
+
+            <div className="flex-1 flex flex-col justify-center items-center px-4 pb-4">
+                <div className="w-full max-w-sm  rounded-lg shadow-lg overflow-hidden">
+                    <img
+                        src={selectedStudent.imagelink}
+                        alt={selectedStudent.name}
+                        className="w-full h-64 object-cover"
+                    />
+                    <div className="p-4">
+                        <h2 className="text-xl font-bold text-neutral mb-2">
+                            {selectedStudent.name}
+                        </h2>
+                        <p className="text-sm text-neutral/70 mb-1">
+                            Register No: {selectedStudent.registerNo}
+                        </p>
+                        <p className="text-sm text-neutral/70">
+                            Year: {selectedStudent.year}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            {/* Bottom Preview Carousel - Horizontal Scrollable */}
+            <div className="flex-shrink-0 bg-darkCream  border-t-2 border-neutral/30 rounded-xl">
+                <div className="p-4">
+                    <h3 className="text-lg font-semibold text-neutral mb-3 text-center">
+                        Choose Image
+                    </h3>
+                    <div className="flex gap-4 overflow-x-auto scrollbar-thin scrollbar-thumb-neutral/20 scrollbar-track-transparent pb-2">
+                        {studentData.map((student) => (
+                            <div
+                                key={student.id}
+                                onClick={() => setSelectedStudent(student)}
+                                className={`flex-shrink-0 cursor-pointer transition-all duration-200 ${
+                                    selectedStudent.id === student.id
+                                        ? "ring-2 ring-neutral ring-offset-2 scale-105"
+                                        : "hover:scale-102 hover:shadow-md"
+                                }`}
+                            >
+                                <div className="w-20 h-20 bg-gray-200 rounded-lg overflow-hidden">
+                                    <img
+                                        src={student.imagelink}
+                                        alt={student.name}
+                                        className="w-full h-full object-cover"
+                                    />
+                                </div>
+                                <div className="mt-1 text-center">
+                                    <p className="text-xs text-neutral font-medium truncate w-20">
+                                        {student.name.split(" ")[0]}
+                                    </p>
+                                    <p className="text-xs text-neutral/60">
+                                        Year {student.year}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            <div className="flex-shrink-0 flex justify-center py-2 bg-darkCream">
+                <div className="flex gap-2">
+                    {studentData.map((student) => (
+                        <div
+                            key={student.id}
+                            className={`w-2 h-2 rounded-full transition-colors duration-200 ${
+                                selectedStudent.id === student.id
+                                    ? "bg-neutral"
+                                    : "bg-neutral/30"
+                            }`}
+                        />
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+}

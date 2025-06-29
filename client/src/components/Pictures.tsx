@@ -1,0 +1,121 @@
+import { entryType } from "@/types/entryType";
+import { useState } from "react";
+export default function Display() {
+    const studentData = [
+        {
+            id: 1,
+            registerNo: "21341A05A1",
+            name: "Arjun Sharma",
+            imagelink:
+                "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
+            year: 3,
+        },
+        {
+            id: 2,
+            registerNo: "21341A05B2",
+            name: "Priya Patel",
+            imagelink:
+                "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
+            year: 2,
+        },
+        {
+            id: 3,
+            registerNo: "21341A05C3",
+            name: "Vikram Singh",
+            imagelink:
+                "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
+            year: 4,
+        },
+        {
+            id: 4,
+            registerNo: "21341A05D4",
+            name: "Sneha Reddy",
+            imagelink:
+                "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
+            year: 1,
+        },
+        {
+            id: 5,
+            registerNo: "21341A05E5",
+            name: "Rahul Kumar",
+            imagelink:
+                "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
+            year: 3,
+        },
+        {
+            id: 6,
+            registerNo: "21341A05F6",
+            name: "Ananya Gupta",
+            imagelink:
+                "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
+            year: 2,
+        },
+        {
+            id: 7,
+            registerNo: "21341A05G7",
+            name: "Karthik Menon",
+            imagelink:
+                "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
+            year: 4,
+        },
+        {
+            id: 8,
+            registerNo: "21341A05H8",
+            name: "Deepika Nair",
+            imagelink:
+                "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
+            year: 1,
+        },
+    ];
+
+    const [selected, setSelected] = useState<entryType>();
+    return (
+        <div className="w-full h-screen flex">
+            <div className="photos-selection basis-1/4 h-full bg-cream border-r-2 lg:p-8 text-center flex flex-col items-center overflow-y-auto">
+                <h1 className="text-4xl text-neutral mb-10 pt-4">
+                    Choose Preview Image
+                </h1>
+                {studentData.map((student) => {
+                    return (
+                        <div
+                            key={student.id}
+                            className="preview-image-container max-h-[300px] max-w-[300px] mb-5"
+                            onClick={() => setSelected(student)}
+                        >
+                            <img
+                                src={student.imagelink}
+                                alt={student.name}
+                                className="rounded-md"
+                            />
+                            <p className="text-sm mt-2">{student.name}</p>
+                            <p className="text-xs text-gray-600">
+                                Year {student.year}
+                            </p>
+                        </div>
+                    );
+                })}
+            </div>
+            <div className="w-3/4  p-4 bg-cream flex flex-col items-center justify-center -mt-24 text-neutral text-center">
+                <h1 className="text-4xl my-10 font-bold">Gallery Preview</h1>
+                {selected ? (
+                    <div className="flex flex-col items-center">
+                        <img
+                            src={selected.imagelink}
+                            className="max-h-5/6 max-w-5/6"
+                        />
+                        <div className="details-box mt-4">
+                            <h2 className="text-2xl font-bold mb-2">{selected.name}</h2>
+                            <p className="text-lg mb-1"><strong>ID:</strong> {selected.id}</p>
+                            <p className="text-lg mb-1"><strong>Register No:</strong> {selected.registerNo}</p>
+                            <p className="text-lg mb-1"><strong>Year:</strong> {selected.year}</p>
+                        </div>
+                    </div>
+                ) : (
+                    <h1 className="text-3xl md:text-5xl lg:text-7xl">
+                        Select to view submission
+                    </h1>
+                )}
+            </div>
+        </div>
+    );
+}
