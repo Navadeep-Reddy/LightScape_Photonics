@@ -4,7 +4,7 @@
 
 /* Apply Faustina font to all text elements */
 * {
-    font-family: "Faustina", sans-erif;
+    font-family: "Faustina", sans-serif;
 }
 
 /* Tailwind CSS v4 theme customizations */
@@ -13,7 +13,6 @@
     --color-neutral: #273e47; /* Charcoal */
     --color-darkCream: #f0ece3;
     --color-cream: #f2efe8;
-
 }
 
 .fancy {
