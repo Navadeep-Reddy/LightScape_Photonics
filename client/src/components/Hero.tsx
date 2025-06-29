@@ -1,12 +1,13 @@
 import Rays from "../../src/assets/rays.png";
 import { Button } from "./ui/button";
+import { Link } from "react-scroll";
 
 export default function Hero() {
     return (
         <div className="min-h-screen pt-24  flex flex-col lg:flex-row  items-center justify-center">
             <div className="lg:basis-1/2 flex justify-center">
                 <img
-                    className=" mb-5 lg:mb-0 max-w-70 max-h-70 md:max lg:max-w-[650px] lg:max-h-[650px]"
+                    className=" mb-5 lg:mx-4 lg:mb-0 max-w-70 max-h-70 md:max lg:max-w-[650px] lg:max-h-[650px]"
                     src={Rays}
                 />
             </div>
@@ -37,9 +38,11 @@ export default function Hero() {
                     world around us.
                 </p>
                 <div className="lg:text-left">
-                    <Button className="fancy text-xl border font-semibold  border-e-neutral/70 rounded-full px-8 py-6 lg:px-20 lg:py-8 hover:bg-white duration-200">
-                        JOIN NOW ↓
-                    </Button>
+                    <Link to="theme" smooth={true}>
+                        <Button className="fancy text-xl border font-semibold  border-e-neutral/70 rounded-full px-8 py-6 lg:px-20 lg:py-8 hover:bg-white duration-200">
+                            JOIN NOW ↓
+                        </Button>
+                    </Link>
                 </div>
             </div>
         </div>

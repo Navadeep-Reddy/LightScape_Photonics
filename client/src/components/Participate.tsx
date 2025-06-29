@@ -1,12 +1,14 @@
-import React from "react";
 import Prism from "../../src/assets/prism.jpeg";
 
 const ThemeSection = () => {
     return (
-        <div className="min-h-screen pt-18 bg-cream flex flex-col lg:flex-row lg:max-w-5/6 lg:mx-auto items-center justify-center">
+        <div
+            className="min-h-screen pt-18 bg-cream flex flex-col lg:flex-row lg:max-w-5/6 lg:mx-auto items-center justify-center"
+            id="theme"
+        >
             <div className="text-content text-center w-5/6 mx-auto mt-5 lg:basis-1/2 flex flex-col lg:px-10">
                 <div className="lg:text-left">
-                    <h1 className="fancy text-neutral font-bold text-3xl lg:text-7xl mb-2 ">
+                    <h1 className="fancy text-neutral  font-bold text-3xl lg:text-7xl mb-2 ">
                         Theme
                     </h1>
                     <h2 className="mb-6 lg:mb-10 text-xl lg:text-3xl font-semibold text-neutral/90 ">
