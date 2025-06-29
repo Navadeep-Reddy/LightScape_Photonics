@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import Logo from "../assets/transparent.png";
+import SPC from "../assets/spc.jpg";
 import { Cross, Cross as Hamburger } from "hamburger-react";
 import { useState } from "react";
 
@@ -17,9 +18,13 @@ export default function Navbar() {
         <div className="fixed top-0 w-full h-18 md:h-24  bg-darkCream border-b-2 lg:border-2 border-gray-600">
             <div className="h-full flex justify-between items-center px-2 lg:px-0 lg:pl-10">
                 <div className="logo-text flex gap-x-2 lg:gap-x-6 items-center ">
-                    <img className="max-h-14 lg:max-h-20" src={Logo}></img>
+                    <div className="flex">
+                        <img className="max-h-14 lg:max-h-20" src={Logo}></img>
+                        <img className="max-h-14 lg:max-h-20" src={SPC}></img>
+                    </div>
+
                     <h1 className="hidden lg:flex lg:text-4xl font-medium text-neutral">
-                        LightsScape
+                        LightScape
                     </h1>
                 </div>
                 <div className="links-menu h-full">
