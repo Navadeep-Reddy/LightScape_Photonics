@@ -35,13 +35,16 @@ const ThemeSection = () => {
                     </span>
                 </p>
 
-                <p className="text-left text-neutral/80 mb-10 lg:mb-10 lg:text-2xl">
+                <p className="text-left text-neutral/80 mb-2 lg:mb-2 lg:text-2xl">
                     Each photograph should aim to visualize a scientific
                     principle of light while demonstrating creativity,
                     observation, and conceptual clarity.
                 </p>
+                <p className="text-left text-neutral/80 mb-10 lg:mb-10 lg:text-2xl">
+                    Deadline: July 8th
+                </p>
 
-                <div className="lg:basis-1/2 flex justify-center mb-5 lg:mb-0 lg:hidden">
+                <div className="lg:basis-1/2 flex justify-center mb-10 lg:mb-0 lg:hidden">
                     <img
                         className="max-w-70 max-h-70 lg:max-w-[650px] lg:max-h-[650px] rounded-full object-cover"
                         src={Prism}
