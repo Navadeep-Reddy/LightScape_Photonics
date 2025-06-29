@@ -14,8 +14,8 @@ export default function Navbar() {
     };
 
     return (
-        <div className="fixed top-0 w-full bg-darkCream border-b-2 lg:border-2 border-gray-600">
-            <div className="h-18 md:h-24 flex justify-between items-center px-2 lg:px-0 lg:pl-10">
+        <div className="fixed top-0 w-full h-18 md:h-24  bg-darkCream border-b-2 lg:border-2 border-gray-600">
+            <div className="h-full flex justify-between items-center px-2 lg:px-0 lg:pl-10">
                 <div className="logo-text flex gap-x-2 lg:gap-x-6 items-center ">
                     <img className="max-h-14 lg:max-h-20" src={Logo}></img>
                     <h1 className="hidden lg:flex lg:text-4xl font-medium text-neutral">
@@ -24,7 +24,11 @@ export default function Navbar() {
                 </div>
                 <div className="links-menu h-full">
                     <div className=" lg:hidden flex items-center h-full">
-                        <Cross toggled={isOpen} color="#949494" />
+                        <Cross
+                            toggled={isOpen}
+                            onToggle={setIsOpen}
+                            color="#949494"
+                        />
                     </div>
                     <ul className="desktop-nav lg:flex text-2xl text-neutral h-full hidden">
                         <Link to="/">
@@ -49,6 +53,14 @@ export default function Navbar() {
                     </ul>
                 </div>
             </div>
+            <ul
+                className={`mobile-nav flex flex-col gap-y-4 text-2xl items-center py-5  bg-darkCream border-b-2 shadow-md text-neutral transition-all duration-300 ease-in-out overflow-hidden ${
+                    isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                }`}
+            >
+                <li className="border-b-1">Home</li>
+                <li className="border-b-1">Gallery</li>
+            </ul>
         </div>
     );
 }
