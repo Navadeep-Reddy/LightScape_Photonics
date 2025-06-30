@@ -1,73 +1,27 @@
-import { useState } from "react";
+import getAllPhotoSubmissions from "@/database/fetchFunction";
 import { entryType } from "@/types/entryType";
+import { useEffect, useState } from "react";
 
 export default function PicturesMobile() {
-    const studentData: entryType[] = [
-        {
-            registerNo: "21341A05A1",
-            name: "Arjun Sharma",
-            title: "The Enigmatic Dance of Light and Shadow",
-            imagelink:
-                "https://lh3.googleusercontent.com/pw/AP1GczOpavVk_Ru11Q96OwNJqBVeg0Or5WcAeSO5dbOPnhrN7MYsw9s4QWNOvxU012ZE1UTYFBMN73AOzu5JvI-DwnVAb-VxiQoo3kOdv3KgG39Z6tNDwjop6zvEFaJAkxLJP8GNdHvk4dGpS5D0spVpzUwe5Q=w1379-h1034-s-no?authuser=0",
-            year: "3",
-        },
-        {
-            registerNo: "21341A05B2",
-            name: "Priya Patel",
-            title: "A Symphony of Colors in the Prism",
-            imagelink:
-                "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
-            year: "2",
-        },
-        {
-            registerNo: "21341A05C3",
-            name: "Vikram Singh",
-            title: "Reflections of a World Unseen",
-            imagelink:
-                "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
-            year: "4",
-        },
-        {
-            registerNo: "21341A05D4",
-            name: "Sneha Reddy",
-            title: "The Hidden Spectrum of Everyday Objects",
-            imagelink:
-                "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
-            year: "1",
-        },
-        {
-            registerNo: "21341A05E5",
-            name: "Rahul Kumar",
-            title: "Chasing the Elusive Northern Lights",
-            imagelink:
-                "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
-            year: "3",
-        },
-        {
-            registerNo: "21341A05F6",
-            name: "Ananya Guptasas",
-            title: "The Art of Capturing a Sunbeam",
-            imagelink:
-                "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
-            year: "2",
-        },
-        {
-            registerNo: "21341A05G7",
-            name: "Karthik Menon",
-            title: "A Journey Through the Lens of a Microscope",
-            imagelink:
-                "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
-            year: "4",
-        },
-        {
-            registerNo: "21341A05H8",
-            name: "Deepika Nair",
-            title: "The Poetry of a Single Raindrop",
-            imagelink:
-                "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
-            year: "1",
-        },
-    ];
+    const [studentData, setStudentData] = useState<entryType[]>([]);
+    const [selectedStudent, setSelectedStudent] = useState<entryType>();
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = (await getAllPhotoSubmissions()) as entryType[];
+
+            if (response) {
+                setStudentData(response);
+                console.log(response[0]);
+                if (response.length > 0) {
+                    setSelectedStudent(response[0]);
+                }
+            } else {
+                setStudentData([]);
+            }
+        };
+        fetchData();
+    }, []);
 
     if (studentData.length === 0) {
         return (
@@ -77,9 +31,9 @@ export default function PicturesMobile() {
         );
     }
 
-    const [selectedStudent, setSelectedStudent] = useState<entryType>(
-        studentData[0]
-    );
+    if (!selectedStudent) {
+        return null; // or a loading spinner
+    }
 
     return (
         <div className="w-full h-screen flex flex-col bg-cream">
@@ -92,16 +46,16 @@ export default function PicturesMobile() {
 
             <div className="flex-1 flex flex-col justify-center items-center px-4 pb-4">
                 <div className="w-full max-w-sm  rounded-lg shadow-lg overflow-hidden">
-                    <div className="relative">
+                    <div className="relative text-center">
                         <img
-                            src={selectedStudent.imagelink}
-                            alt={selectedStudent.name}
+                            src={selectedStudent.imageLink}
+                            alt={selectedStudent.name + "'s Entry"}
                             className="w-full h-64 object-cover"
                         />
                         {/* Enlarge Icon */}
                         <button
                             onClick={() =>
-                                window.open(selectedStudent.imagelink, "_blank")
+                                window.open(selectedStudent.imageLink, "_blank")
                             }
                             className="absolute bottom-2 right-2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-200 hover:scale-110"
                             title="View full image"
@@ -158,7 +112,7 @@ export default function PicturesMobile() {
                             >
                                 <div className="w-20 h-20 bg-gray-200 rounded-lg overflow-hidden">
                                     <img
-                                        src={student.imagelink}
+                                        src={student.imageLink}
                                         alt={student.name}
                                         className="w-full h-full object-cover"
                                     />

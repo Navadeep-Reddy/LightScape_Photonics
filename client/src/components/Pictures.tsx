@@ -1,72 +1,18 @@
+import getAllPhotoSubmissions from "@/database/fetchFunction";
 import { entryType } from "@/types/entryType";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 export default function Display() {
-    const studentData = [
-        {
-            registerNo: "21341A05A1",
-            name: "Arjun Sharma",
-            title: "The Enigmatic Dance of Light and Shadow",
-            imagelink:
-                "https://lh3.googleusercontent.com/pw/AP1GczOpavVk_Ru11Q96OwNJqBVeg0Or5WcAeSO5dbOPnhrN7MYsw9s4QWNOvxU012ZE1UTYFBMN73AOzu5JvI-DwnVAb-VxiQoo3kOdv3KgG39Z6tNDwjop6zvEFaJAkxLJP8GNdHvk4dGpS5D0spVpzUwe5Q=w1379-h1034-s-no?authuser=0",
-            year: "3",
-        },
-        {
-            registerNo: "21341A05B2",
-            name: "Priya Patel",
-            title: "A Symphony of Colors in the Prism",
-            imagelink:
-                "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
-            year: "2",
-        },
-        {
-            registerNo: "21341A05C3",
-            name: "Vikram Singh",
-            title: "Reflections of a World Unseen",
-            imagelink:
-                "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
-            year: "4",
-        },
-        {
-            registerNo: "21341A05D4",
-            name: "Sneha Reddy",
-            title: "The Hidden Spectrum of Everyday Objects",
-            imagelink:
-                "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
-            year: "1",
-        },
-        {
-            registerNo: "21341A05E5",
-            name: "Rahul Kumar",
-            title: "Chasing the Elusive Northern Lights",
-            imagelink:
-                "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
-            year: "3",
-        },
-        {
-            registerNo: "21341A05F6",
-            name: "Ananya Guptasas",
-            title: "The Art of Capturing a Sunbeam",
-            imagelink:
-                "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
-            year: "2",
-        },
-        {
-            registerNo: "21341A05G7",
-            name: "Karthik Menon",
-            title: "A Journey Through the Lens of a Microscope",
-            imagelink:
-                "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
-            year: "4",
-        },
-        {
-            registerNo: "21341A05H8",
-            name: "Deepika Nair",
-            title: "The Poetry of a Single Raindrop",
-            imagelink:
-                "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
-            year: "1",
-        },
-    ];
+    const [studentData, setStudentData] = useState<entryType[]>([]);
+    const [selected, setSelected] = useState<entryType>();
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = (await getAllPhotoSubmissions()) as entryType[];
+
+            if (response) setStudentData(response);
+            else setStudentData([]);
+        };
+        fetchData();
+    }, []);
 
     if (studentData.length === 0) {
         return (
@@ -76,7 +22,6 @@ export default function Display() {
         );
     }
 
-    const [selected, setSelected] = useState<entryType>();
     return (
         <div className="w-full h-screen flex overflow-hidden">
             <div className="photos-selection basis-1/4 h-full bg-cream border-r-2 lg:p-8 md:p-8 text-center flex flex-col items-center overflow-y-auto">
@@ -91,7 +36,7 @@ export default function Display() {
                             onClick={() => setSelected(student)}
                         >
                             <img
-                                src={student.imagelink}
+                                src={student.imageLink}
                                 alt={student.name}
                                 className="rounded-md"
                             />
@@ -109,13 +54,13 @@ export default function Display() {
                     <div className="flex flex-col items-center">
                         <div className="relative h-[60vh] w-full">
                             <img
-                                src={selected.imagelink}
+                                src={selected.imageLink}
                                 className="rounded-lg h-full w-full object-cover"
                                 alt={selected.name}
                             />
                             <button
                                 onClick={() =>
-                                    window.open(selected.imagelink, "_blank")
+                                    window.open(selected.imageLink, "_blank")
                                 }
                                 className="absolute bottom-3 right-3 bg-black/60 hover:bg-black/80 text-white p-2 rounded-full transition-all duration-200 hover:scale-110 shadow-lg"
                                 title="View full image"

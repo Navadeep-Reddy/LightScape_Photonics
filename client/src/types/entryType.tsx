@@ -2,6 +2,7 @@ export interface entryType {
     registerNo: string;
     name: string;
     title: string;
-    imagelink: string;
+    imageLink: string;
     year: string;
+    timestamp: string;
 }
