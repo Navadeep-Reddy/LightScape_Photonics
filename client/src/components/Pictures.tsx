@@ -6,6 +6,7 @@ export default function Display() {
             id: 1,
             registerNo: "21341A05A1",
             name: "Arjun Sharma",
+            title: "The Enigmatic Dance of Light and Shadow",
             imagelink:
                 "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
             year: 3,
@@ -14,6 +15,7 @@ export default function Display() {
             id: 2,
             registerNo: "21341A05B2",
             name: "Priya Patel",
+            title: "A Symphony of Colors in the Prism",
             imagelink:
                 "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
             year: 2,
@@ -22,6 +24,7 @@ export default function Display() {
             id: 3,
             registerNo: "21341A05C3",
             name: "Vikram Singh",
+            title: "Reflections of a World Unseen",
             imagelink:
                 "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
             year: 4,
@@ -30,6 +33,7 @@ export default function Display() {
             id: 4,
             registerNo: "21341A05D4",
             name: "Sneha Reddy",
+            title: "The Hidden Spectrum of Everyday Objects",
             imagelink:
                 "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
             year: 1,
@@ -38,6 +42,7 @@ export default function Display() {
             id: 5,
             registerNo: "21341A05E5",
             name: "Rahul Kumar",
+            title: "Chasing the Elusive Northern Lights",
             imagelink:
                 "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
             year: 3,
@@ -46,6 +51,7 @@ export default function Display() {
             id: 6,
             registerNo: "21341A05F6",
             name: "Ananya Gupta",
+            title: "The Art of Capturing a Sunbeam",
             imagelink:
                 "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
             year: 2,
@@ -54,6 +60,7 @@ export default function Display() {
             id: 7,
             registerNo: "21341A05G7",
             name: "Karthik Menon",
+            title: "A Journey Through the Lens of a Microscope",
             imagelink:
                 "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
             year: 4,
@@ -62,6 +69,7 @@ export default function Display() {
             id: 8,
             registerNo: "21341A05H8",
             name: "Deepika Nair",
+            title: "The Poetry of a Single Raindrop",
             imagelink:
                 "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
             year: 1,
@@ -89,7 +97,7 @@ export default function Display() {
                             />
                             <p className="text-sm mt-2">{student.name}</p>
                             <p className="text-xs text-gray-600">
-                                Year {student.year}
+                                {student.title}
                             </p>
                         </div>
                     );
@@ -132,7 +140,7 @@ export default function Display() {
                                 {selected.name}
                             </h2>
                             <p className="text-lg mb-1">
-                                <strong>ID:</strong> {selected.id}
+                                <strong>Title:</strong> {selected.title}
                             </p>
                             <p className="text-lg mb-1">
                                 <strong>Register No:</strong>{" "}

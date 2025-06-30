@@ -1,27 +1,22 @@
 import { useState } from "react";
-
-interface StudentData {
-    id: number;
-    registerNo: string;
-    name: string;
-    imagelink: string;
-    year: number;
-}
+import { entryType } from "@/types/entryType";
 
 export default function PicturesMobile() {
-    const studentData: StudentData[] = [
+    const studentData: entryType[] = [
         {
             id: 1,
             registerNo: "21341A05A1",
             name: "Arjun Sharma",
+            title: "The Enigmatic Dance of Light and Shadow",
             imagelink:
-                "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
+                "https://lh3.googleusercontent.com/pw/AP1GczOpavVk_Ru11Q96OwNJqBVeg0Or5WcAeSO5dbOPnhrN7MYsw9s4QWNOvxU012ZE1UTYFBMN73AOzu5JvI-DwnVAb-VxiQoo3kOdv3KgG39Z6tNDwjop6zvEFaJAkxLJP8GNdHvk4dGpS5D0spVpzUwe5Q=w1379-h1034-s-no?authuser=0",
             year: 3,
         },
         {
             id: 2,
             registerNo: "21341A05B2",
             name: "Priya Patel",
+            title: "A Symphony of Colors in the Prism",
             imagelink:
                 "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
             year: 2,
@@ -30,6 +25,7 @@ export default function PicturesMobile() {
             id: 3,
             registerNo: "21341A05C3",
             name: "Vikram Singh",
+            title: "Reflections of a World Unseen",
             imagelink:
                 "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
             year: 4,
@@ -38,6 +34,7 @@ export default function PicturesMobile() {
             id: 4,
             registerNo: "21341A05D4",
             name: "Sneha Reddy",
+            title: "The Hidden Spectrum of Everyday Objects",
             imagelink:
                 "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
             year: 1,
@@ -46,6 +43,7 @@ export default function PicturesMobile() {
             id: 5,
             registerNo: "21341A05E5",
             name: "Rahul Kumar",
+            title: "Chasing the Elusive Northern Lights",
             imagelink:
                 "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
             year: 3,
@@ -54,6 +52,7 @@ export default function PicturesMobile() {
             id: 6,
             registerNo: "21341A05F6",
             name: "Ananya Guptasas",
+            title: "The Art of Capturing a Sunbeam",
             imagelink:
                 "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
             year: 2,
@@ -62,6 +61,7 @@ export default function PicturesMobile() {
             id: 7,
             registerNo: "21341A05G7",
             name: "Karthik Menon",
+            title: "A Journey Through the Lens of a Microscope",
             imagelink:
                 "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
             year: 4,
@@ -70,13 +70,14 @@ export default function PicturesMobile() {
             id: 8,
             registerNo: "21341A05H8",
             name: "Deepika Nair",
+            title: "The Poetry of a Single Raindrop",
             imagelink:
                 "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
             year: 1,
         },
     ];
 
-    const [selectedStudent, setSelectedStudent] = useState<StudentData>(
+    const [selectedStudent, setSelectedStudent] = useState<entryType>(
         studentData[0]
     );
 
@@ -125,6 +126,9 @@ export default function PicturesMobile() {
                             {selectedStudent.name}
                         </h2>
                         <p className="text-sm text-neutral/70 mb-1">
+                            {selectedStudent.title}
+                        </p>
+                        <p className="text-sm text-neutral/70 mb-1">
                             Register No: {selectedStudent.registerNo}
                         </p>
                         <p className="text-sm text-neutral/70">
@@ -162,8 +166,8 @@ export default function PicturesMobile() {
                                     <p className="text-xs text-neutral font-medium truncate w-20">
                                         {student.name.split(" ")[0]}
                                     </p>
-                                    <p className="text-xs text-neutral/60">
-                                        Year {student.year}
+                                    <p className="text-xs text-neutral/60 truncate w-20">
+                                        {student.title}
                                     </p>
                                 </div>
                             </div>
