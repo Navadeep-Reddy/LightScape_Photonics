@@ -41,7 +41,7 @@ const ThemeSection = () => {
                     observation, and conceptual clarity.
                 </p>
                 <p className="text-left text-neutral/80 mb-10 lg:mb-10 lg:text-2xl">
-                    Deadline: July 8th
+                    Deadline: July 7th 7PM
                 </p>
 
                 <div className="lg:basis-1/2 flex justify-center mb-10 lg:mb-0 lg:hidden">
