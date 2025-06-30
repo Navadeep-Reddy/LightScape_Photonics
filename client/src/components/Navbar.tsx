@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import Logo from "../assets/transparent.png";
 import SPC from "../assets/spc.jpg";
-import { Cross, Cross as Hamburger } from "hamburger-react";
+import { Cross } from "hamburger-react";
 import { useState } from "react";
 
 export default function Navbar() {
