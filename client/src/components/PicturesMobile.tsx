@@ -4,78 +4,78 @@ import { entryType } from "@/types/entryType";
 export default function PicturesMobile() {
     const studentData: entryType[] = [
         {
-            id: 1,
             registerNo: "21341A05A1",
             name: "Arjun Sharma",
             title: "The Enigmatic Dance of Light and Shadow",
             imagelink:
                 "https://lh3.googleusercontent.com/pw/AP1GczOpavVk_Ru11Q96OwNJqBVeg0Or5WcAeSO5dbOPnhrN7MYsw9s4QWNOvxU012ZE1UTYFBMN73AOzu5JvI-DwnVAb-VxiQoo3kOdv3KgG39Z6tNDwjop6zvEFaJAkxLJP8GNdHvk4dGpS5D0spVpzUwe5Q=w1379-h1034-s-no?authuser=0",
-            year: 3,
+            year: "3",
         },
         {
-            id: 2,
             registerNo: "21341A05B2",
             name: "Priya Patel",
             title: "A Symphony of Colors in the Prism",
             imagelink:
                 "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
-            year: 2,
+            year: "2",
         },
         {
-            id: 3,
             registerNo: "21341A05C3",
             name: "Vikram Singh",
             title: "Reflections of a World Unseen",
             imagelink:
                 "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
-            year: 4,
+            year: "4",
         },
         {
-            id: 4,
             registerNo: "21341A05D4",
             name: "Sneha Reddy",
             title: "The Hidden Spectrum of Everyday Objects",
             imagelink:
                 "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
-            year: 1,
+            year: "1",
         },
         {
-            id: 5,
             registerNo: "21341A05E5",
             name: "Rahul Kumar",
             title: "Chasing the Elusive Northern Lights",
             imagelink:
                 "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
-            year: 3,
+            year: "3",
         },
         {
-            id: 6,
             registerNo: "21341A05F6",
             name: "Ananya Guptasas",
             title: "The Art of Capturing a Sunbeam",
             imagelink:
                 "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
-            year: 2,
+            year: "2",
         },
         {
-            id: 7,
             registerNo: "21341A05G7",
             name: "Karthik Menon",
             title: "A Journey Through the Lens of a Microscope",
             imagelink:
                 "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
-            year: 4,
+            year: "4",
         },
         {
-            id: 8,
             registerNo: "21341A05H8",
             name: "Deepika Nair",
             title: "The Poetry of a Single Raindrop",
             imagelink:
                 "https://github.com/Navadeep-Reddy/ProjectScreenshots/raw/main/IEEE_PES/Screenshot%20From%202025-06-29%2016-04-24.png?raw=true",
-            year: 1,
+            year: "1",
         },
     ];
+
+    if (studentData.length === 0) {
+        return (
+            <div className="w-full h-screen flex items-center justify-center bg-cream text-neutral text-2xl p-4 text-center">
+                Oops! There are no approved submissions yet
+            </div>
+        );
+    }
 
     const [selectedStudent, setSelectedStudent] = useState<entryType>(
         studentData[0]
@@ -147,10 +147,11 @@ export default function PicturesMobile() {
                     <div className="flex gap-4 overflow-x-auto scrollbar-thin scrollbar-thumb-neutral/20 scrollbar-track-transparent pb-2">
                         {studentData.map((student) => (
                             <div
-                                key={student.id}
+                                key={student.registerNo}
                                 onClick={() => setSelectedStudent(student)}
                                 className={`flex-shrink-0 cursor-pointer transition-all duration-200 ${
-                                    selectedStudent.id === student.id
+                                    selectedStudent.registerNo ===
+                                    student.registerNo
                                         ? "ring-2 ring-neutral ring-offset-2 scale-105"
                                         : "hover:scale-102 hover:shadow-md"
                                 }`}
@@ -180,9 +181,10 @@ export default function PicturesMobile() {
                 <div className="flex gap-2">
                     {studentData.map((student) => (
                         <div
-                            key={student.id}
+                            key={student.registerNo}
                             className={`w-2 h-2 rounded-full transition-colors duration-200 ${
-                                selectedStudent.id === student.id
+                                selectedStudent.registerNo ===
+                                student.registerNo
                                     ? "bg-neutral"
                                     : "bg-neutral/30"
                             }`}
