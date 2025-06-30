@@ -98,7 +98,7 @@ export default function PicturesMobile() {
                     <h3 className="text-lg font-semibold text-neutral mb-3 text-center">
                         Choose Image
                     </h3>
-                    <div className="flex gap-4 overflow-x-auto scrollbar-thin scrollbar-thumb-neutral/20 scrollbar-track-transparent pb-2">
+                    <div className="flex gap-4 overflow-x-auto scrollbar-thin scrollbar-thumb-neutral/20 scrollbar-track-transparent p-2">
                         {studentData.map((student) => (
                             <div
                                 key={student.registerNo}
