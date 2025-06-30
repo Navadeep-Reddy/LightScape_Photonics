@@ -91,11 +91,35 @@ export default function PicturesMobile() {
 
             <div className="flex-1 flex flex-col justify-center items-center px-4 pb-4">
                 <div className="w-full max-w-sm  rounded-lg shadow-lg overflow-hidden">
-                    <img
-                        src={selectedStudent.imagelink}
-                        alt={selectedStudent.name}
-                        className="w-full h-64 object-cover"
-                    />
+                    <div className="relative">
+                        <img
+                            src={selectedStudent.imagelink}
+                            alt={selectedStudent.name}
+                            className="w-full h-64 object-cover"
+                        />
+                        {/* Enlarge Icon */}
+                        <button
+                            onClick={() =>
+                                window.open(selectedStudent.imagelink, "_blank")
+                            }
+                            className="absolute bottom-2 right-2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-200 hover:scale-110"
+                            title="View full image"
+                        >
+                            <svg
+                                className="w-4 h-4"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+                                />
+                            </svg>
+                        </button>
+                    </div>
                     <div className="p-4">
                         <h2 className="text-xl font-bold text-neutral mb-2">
                             {selectedStudent.name}

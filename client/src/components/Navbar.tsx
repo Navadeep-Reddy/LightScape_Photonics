@@ -14,8 +14,14 @@ export default function Navbar() {
         return active;
     };
 
+    const checkActiveMobile = (path: string): string => {
+        const active =
+            location.pathname == path ? "text-orange-400" : "bg-tranparent";
+        return active;
+    };
+
     return (
-        <div className="fixed top-0 w-full h-18 md:h-24  bg-darkCream border-b-2 lg:border-2 border-gray-600">
+        <div className="fixed top-0 w-full h-18 md:h-24   bg-darkCream border-b-2 lg:border-2 border-gray-600 z-20">
             <div className="h-full flex justify-between items-center px-2 lg:px-0 lg:pl-10">
                 <div className="logo-text flex gap-x-2 lg:gap-x-6 items-center ">
                     <div className="flex">
@@ -63,8 +69,13 @@ export default function Navbar() {
                     isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
                 }`}
             >
-                <li className="border-b-1">Home</li>
-                <li className="border-b-1">Gallery</li>
+                <Link to="/">
+                    <li className={`border-b-1 ${checkActiveMobile("/")}`}>Home</li>
+                </Link>
+
+                <Link to="/gallery">
+                    <li className={`border-b-1 ${checkActiveMobile("/gallery")}`}>Gallery</li>
+                </Link>
             </ul>
         </div>
     );
