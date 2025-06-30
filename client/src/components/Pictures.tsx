@@ -32,16 +32,20 @@ export default function Display() {
                     return (
                         <div
                             key={student.registerNo}
-                            className="preview-image-container max-h-[300px] max-w-[300px] mb-5"
+                            className="preview-image-container w-full p-2 rounded-lg cursor-pointer hover:bg-gray-200 transition-colors duration-200"
                             onClick={() => setSelected(student)}
                         >
-                            <img
-                                src={student.imageLink}
-                                alt={student.name}
-                                className="rounded-md"
-                            />
-                            <p className="text-sm mt-2">{student.name}</p>
-                            <p className="text-xs text-gray-600">
+                            <div className="w-full aspect-video overflow-hidden rounded-md">
+                                <img
+                                    src={student.imageLink}
+                                    alt={student.name}
+                                    className="w-full h-full object-cover"
+                                />
+                            </div>
+                            <p className="text-sm mt-2 font-semibold">
+                                {student.name}
+                            </p>
+                            <p className="text-xs text-gray-500">
                                 {student.title}
                             </p>
                         </div>
