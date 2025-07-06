@@ -83,7 +83,7 @@ export default function PicturesMobile() {
                             {selectedStudent.title}
                         </p>
                         <p className="text-sm text-neutral/70 mb-1">
-                            Register No: {selectedStudent.registerNo}
+                            Digital ID: {selectedStudent.registerNo}
                         </p>
                         <p className="text-sm text-neutral/70">
                             Year: {selectedStudent.year}

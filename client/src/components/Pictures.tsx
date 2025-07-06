@@ -92,7 +92,7 @@ export default function Display() {
                                 <strong>Title:</strong> {selected.title}
                             </p>
                             <p className="text-lg mb-1">
-                                <strong>Register No:</strong>{" "}
+                                <strong>Digital ID:</strong>{" "}
                                 {selected.registerNo}
                             </p>
                             <p className="text-lg mb-1">
