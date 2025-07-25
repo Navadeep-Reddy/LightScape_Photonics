@@ -1,9 +1,20 @@
 import getAllPhotoSubmissions from "@/database/fetchFunction";
 import { entryType } from "@/types/entryType";
 import { useEffect, useState } from "react";
+
 export default function Display() {
     const [studentData, setStudentData] = useState<entryType[]>([]);
     const [selected, setSelected] = useState<entryType>();
+
+    // Award mapping for specific registration numbers
+    const awards: { [key: string]: string } = {
+        "2410402": "Best Photon Shot",
+        "2310059": "Best Conceptual Photo",
+        "2410238": "Creative Composition Award",
+        "2410407": "Special Shoutout",
+        "2310253": "Special Shoutout",
+    };
+
     useEffect(() => {
         const fetchData = async () => {
             const response = (await getAllPhotoSubmissions()) as entryType[];
@@ -48,6 +59,11 @@ export default function Display() {
                             <p className="text-xs text-gray-500">
                                 {student.title}
                             </p>
+                            {awards[student.registerNo] && (
+                                <p className="text-xs font-bold text-yellow-600 bg-yellow-100 px-2 py-1 rounded-full mt-1">
+                                    🏆 {awards[student.registerNo]}
+                                </p>
+                            )}
                         </div>
                     );
                 })}
@@ -88,6 +104,13 @@ export default function Display() {
                             <h2 className="text-2xl font-bold mb-2">
                                 {selected.name}
                             </h2>
+                            {awards[selected.registerNo] && (
+                                <div className="mb-3 px-4 py-2 bg-yellow-100 text-yellow-800 rounded-lg inline-block">
+                                    <span className="text-lg font-bold">
+                                        🏆 {awards[selected.registerNo]}
+                                    </span>
+                                </div>
+                            )}
                             <p className="text-lg mb-1">
                                 <strong>Title:</strong> {selected.title}
                             </p>

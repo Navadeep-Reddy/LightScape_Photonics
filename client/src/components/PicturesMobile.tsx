@@ -6,6 +6,15 @@ export default function PicturesMobile() {
     const [studentData, setStudentData] = useState<entryType[]>([]);
     const [selectedStudent, setSelectedStudent] = useState<entryType>();
 
+    // Award mapping for specific registration numbers
+    const awards: { [key: string]: string } = {
+        "2410402": "Best Photon Shot",
+        "2310059": "Best Conceptual Photo",
+        "2410238": "Creative Composition Award",
+        "2410407": "Special Shoutout",
+        "2310253": "Special Shoutout",
+    };
+
     useEffect(() => {
         const fetchData = async () => {
             const response = (await getAllPhotoSubmissions()) as entryType[];
@@ -79,6 +88,13 @@ export default function PicturesMobile() {
                         <h2 className="text-xl font-bold text-neutral mb-2">
                             {selectedStudent.name}
                         </h2>
+                        {awards[selectedStudent.registerNo] && (
+                            <div className="mb-2 px-3 py-1 bg-yellow-100 text-yellow-800 rounded-lg inline-block">
+                                <span className="text-sm font-bold">
+                                    🏆 {awards[selectedStudent.registerNo]}
+                                </span>
+                            </div>
+                        )}
                         <p className="text-sm text-neutral/70 mb-1">
                             {selectedStudent.title}
                         </p>
@@ -88,6 +104,14 @@ export default function PicturesMobile() {
                         <p className="text-sm text-neutral/70">
                             Year: {selectedStudent.year}
                         </p>
+                        {/* Award Badge */}
+                        {awards[selectedStudent.registerNo] && (
+                            <div className="mt-2">
+                                <span className="text-xs bg-yellow-100 text-yellow-800 rounded-full px-3 py-1">
+                                    {awards[selectedStudent.registerNo]}
+                                </span>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
@@ -124,6 +148,11 @@ export default function PicturesMobile() {
                                     <p className="text-xs text-neutral/60 truncate w-20">
                                         {student.title}
                                     </p>
+                                    {awards[student.registerNo] && (
+                                        <p className="text-xs font-bold text-yellow-600 bg-yellow-100 px-1 rounded-full mt-1">
+                                            🏆
+                                        </p>
+                                    )}
                                 </div>
                             </div>
                         ))}
