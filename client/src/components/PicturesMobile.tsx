@@ -104,14 +104,6 @@ export default function PicturesMobile() {
                         <p className="text-sm text-neutral/70">
                             Year: {selectedStudent.year}
                         </p>
-                        {/* Award Badge */}
-                        {awards[selectedStudent.registerNo] && (
-                            <div className="mt-2">
-                                <span className="text-xs bg-yellow-100 text-yellow-800 rounded-full px-3 py-1">
-                                    {awards[selectedStudent.registerNo]}
-                                </span>
-                            </div>
-                        )}
                     </div>
                 </div>
             </div>
